@@ -41,13 +41,17 @@ export default function Create() {
       setDetailsError(true)
     }
     if (title && details) {
-      fetch('http://localhost:8000/notes', {
+      fetch('https://4pavetg9a3.execute-api.us-east-1.amazonaws.com/items', {
         method: 'POST',
         headers: {"Content-type": "application/json"},
         body: JSON.stringify({ title, details, category })
       }).then(() => history.push('/'))
     }
   }
+
+  const style = {
+    cursor: 'pointer'
+  };
 
   return (
     <Container>
@@ -98,6 +102,7 @@ export default function Create() {
           type="submit" 
           color="secondary" 
           variant="contained"
+          style={style}
           endIcon={<KeyboardArrowRight />}
         >
           Submit
